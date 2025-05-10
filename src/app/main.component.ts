@@ -2,6 +2,7 @@ import html from "./main.component.html";
 import css from "./main.component.css";
 import { WebzComponent } from "@boots-edu/webz";
 import { Controller } from "../Controller";
+import { GuiViewComponent } from "./gui-view/gui-view.component";
 import { TextViewComponent } from "./text-view/text-view.component";
 
 /**
@@ -19,8 +20,22 @@ export class MainComponent extends WebzComponent {
 
         // create an instance of controller
         this.controller = new Controller(4, 5);
-        const textViewComponent = new TextViewComponent(this.controller);
-         this.addComponent(textViewComponent, "game")     
-    }   
+
+        // pass true if you want to run the text based input
+        // and false if you want to run the gui based
+        this.setUpView(false);
+    }
+
+    setUpView(isTextInput: boolean) {
+        if (isTextInput) {
+            // set up the textView
+            const textViewComponent = new TextViewComponent(this.controller);
+            this.addComponent(textViewComponent, "game");
+        } else {
+            // set up the guiView
+            const guiViewComponent = new GuiViewComponent(this.controller);
+            this.addComponent(guiViewComponent, "game");
+        }
+    }
 }
 

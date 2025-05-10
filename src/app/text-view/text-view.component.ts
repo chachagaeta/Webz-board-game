@@ -1,12 +1,4 @@
-import {
-    BindValue,
-    BindValueToNumber,
-    Change,
-    Click,
-    Input,
-    ValueEvent,
-    WebzComponent,
-} from "@boots-edu/webz";
+import {BindValue, BindValueToNumber, Change, Click, Input, ValueEvent, WebzComponent} from "@boots-edu/webz";
 import html from "./text-view.component.html";
 import css from "./text-view.component.css";
 import { Controller } from "../../Controller";
@@ -36,12 +28,10 @@ export class TextViewComponent extends WebzComponent {
 
     constructor(private controller: Controller) {
         super(html, css);
-        // set the string representation of the game board
         this.displayGame();
         this.message = "Ready to Play!";
     }
 
-    // Events - when user enters values in the textboxes
     @Input("start-row")
     onStartRowChange(evt: ValueEvent) {
         this.startRow = +evt.value;
@@ -61,13 +51,10 @@ export class TextViewComponent extends WebzComponent {
     onEndColChange(evt: ValueEvent) {
         this.endCol = +evt.value;
     }
-    // Event - when user makes selection from selection box
     @Change("operation-select")
     onOperationSelectChange(event: ValueEvent) {
         this.operationSelect = event.value;
     }
-
-    // Event - when user clicks Go button
     @Click("go")
     onGo() {
         this.controller.carryOutAction(
@@ -75,12 +62,7 @@ export class TextViewComponent extends WebzComponent {
             new Location(this.endRow, this.endCol),
             this.operationSelect,
         );
-
-        // Update the 'View' with the current status
-        // of the game
-        // set the string representation of the game board
         this.displayGame();
-        // Display whether Game is Over
         if (this.controller.getGame().isGameEnded()) {
             this.message = "Game Over" + this.controller.getGame().getWinner();
         } else {
