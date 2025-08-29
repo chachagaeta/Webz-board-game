@@ -1,9 +1,1 @@
-# Classwork
-
-Hello, and welcome to the ongoing classwork repository. Please refer to your instructor's instructions for how to use this repository.
-
-In general, you can expect that you will need to:
-
-1. Clone this repository to your local machine.
-2. Open the repository in VS Code.
-3. Run the `npm install` command to install dependencies.
+A two-player turn-based strategy game built with TypeScript and the Webz framework, featuring unique characters and actions such as move, attack, recruit, and special abilities. To play, clone this repository with git clone https://github.com/chachagaeta/webz-board-game.git, run cd webz-board-game, install dependencies with npm install, and start the game using npm start. The interface is styled with HTML/CSS for a simple and interactive experience.
